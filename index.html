@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ولاگ من | استاتیک</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>ولاگ من</h1>
+    <p>ثبت خاطرات روزانه با ویدیو و تصویر</p>
+  </header>
+
+  <!-- ثبت‌نام -->
+  <div id="registerForm" class="form-box">
+    <h2>ثبت‌نام</h2>
+    <input type="text" id="regName" placeholder="نام کامل" />
+    <input type="email" id="regEmail" placeholder="ایمیل" />
+    <input type="password" id="regPass" placeholder="رمز عبور" />
+    <button onclick="register()">ثبت‌نام</button>
+    <p>قبلاً ثبت‌نام کردی؟ <span onclick="showLogin()" class="link">ورود</span></p>
+  </div>
+
+  <!-- ورود -->
+  <div id="loginForm" class="form-box" style="display:none;">
+    <h2>ورود</h2>
+    <input type="email" id="loginEmail" placeholder="ایمیل" />
+    <input type="password" id="loginPass" placeholder="رمز عبور" />
+    <button onclick="login()">ورود</button>
+    <p>حساب نداری؟ <span onclick="showRegister()" class="link">ثبت‌نام کن</span></p>
+  </div>
+
+  <!-- خوش‌آمدگویی + ولاگ‌ها -->
+  <div id="welcome">
+    <h2>خوش آمدی، <span id="userName"></span>!</h2>
+    <button onclick="showAdmin()" id="adminBtn" style="display:none;">پنل ادمین</button>
+    <button onclick="showProfile()" id="profileBtn">پروفایل</button>
+    <button onclick="logout()">خروج</button>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="جستجو در عنوان یا توضیحات..." onkeyup="searchVlogs()" />
+    </div>
+
+    <div id="vlogsContainer">
+      <h3>ولاگ‌های جدید <span id="loading" class="loading" style="display:none;">در حال بارگذاری...</span></h3>
+      <div id="vlogs"></div>
+    </div>
+  </div>
+
+  <!-- پنل ادمین -->
+  <div id="adminPanel">
+    <div class="back-btn" onclick="hideAdmin()">برگشت</div>
+    <div class="upload-box">
+      <h2>آپلود ولاگ جدید</h2>
+      <input type="text" id="title" placeholder="عنوان ولاگ" />
+      <textarea id="desc" placeholder="توضیحات"></textarea>
+      <input type="file" id="fileInput" accept="image/*" />
+      <button onclick="uploadVlog()">آپلود</button>
+    </div>
+    <div>
+      <h3>ولاگ‌های آپلود شده</h3>
+      <div id="adminVlogs"></div>
+    </div>
+  </div>
+
+  <!-- پروفایل کاربر -->
+  <div id="profilePanel">
+    <div class="back-btn" onclick="hideProfile()">برگشت</div>
+    <div class="profile-box">
+      <div class="profile-info">
+        <img src="https://via.placeholder.com/80" alt="پروفایل" />
+        <h3 id="profileName"></h3>
+        <p id="profileEmail"></p>
+      </div>
+      <h3>ولاگ‌های لایک شده توسط شما</h3>
+      <div id="likedVlogs"></div>
+    </div>
+  </div>
+
+  <div id="msg"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
